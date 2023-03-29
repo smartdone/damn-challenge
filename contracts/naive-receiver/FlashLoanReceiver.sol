@@ -38,6 +38,7 @@ contract FlashLoanReceiver is IERC3156FlashBorrower {
         if (token != ETH)
             revert UnsupportedCurrency();
         
+        // 每次闪电贷会花1ether手续费，循环到手续费扣完即可
         uint256 amountToBeRepaid;
         unchecked {
             amountToBeRepaid = amount + fee;
