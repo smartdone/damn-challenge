@@ -1,6 +1,5 @@
 import { ethers } from 'hardhat';
 import { expect } from 'chai';
-import { token } from '../../typechain-types/@openzeppelin/contracts';
 
 
 describe('[Challenge] Naive receiver', function () {

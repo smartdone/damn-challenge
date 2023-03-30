@@ -29,6 +29,8 @@ contract TrusterLenderPool is ReentrancyGuard {
         uint256 balanceBefore = token.balanceOf(address(this));
 
         token.transfer(borrower, amount);
+        // functionCall是address的一个内置函数，作用类似于call函数，所以只需要将target改成token地址
+        // 然后调用approve(address,uint256)将token授权给自己的地址，授权之后转账即可
         target.functionCall(data);
 
         if (token.balanceOf(address(this)) < balanceBefore)

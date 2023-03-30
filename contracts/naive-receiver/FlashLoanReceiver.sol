@@ -40,6 +40,7 @@ contract FlashLoanReceiver is IERC3156FlashBorrower {
         
         // 每次闪电贷会花1ether手续费，循环到手续费扣完即可
         uint256 amountToBeRepaid;
+        // 使用unchecked会造成整形溢出，不过这个里面很难被触发
         unchecked {
             amountToBeRepaid = amount + fee;
         }
